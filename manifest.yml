@@ -1,0 +1,25 @@
+---
+declared-services:
+  wvb-watson-assistant:
+    label: conversation
+    plan: free
+  Text to Speech-Squadnagi:
+    label: text_to_speech
+    plan: lite
+  Speech to Text-Squadnagi:
+    label: speech_to_text
+    plan: lite
+
+applications:
+- path: .
+  memory: 128M
+  instances: 1
+  name: squadnagi-voice-bot
+  disk_quota: 512M
+  buildpacks:
+    - python_buildpack
+  random-route: false
+  services:
+  - wvb-watson-assistant
+  - Text to Speech-Squadnagi
+  - Speech to Text-Squadnagi
